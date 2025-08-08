@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Siswa Kelas 7H - SMP Santo Yoseph Denpasar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #3498db;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            padding-top: 130px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* Header & Navbar Styles */
+        .header-wrapper {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        .header-wrapper.hide {
+            transform: translateY(-100%);
+        }
+
+        .header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.3rem;
+            color: var(--dark-color);
+        }
+
+        .logo-text p {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+        }
+
+        /* Navbar Full Width */
+        .navbar {
+            background: var(--dark-color);
+            width: 100%;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            flex: 1;
+            text-align: center;
+            max-width: 150px;
+        }
+
+        .nav-links li a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 0;
+            display: block;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            background: var(--primary-color);
+        }
+
+        /* Mobile Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--dark-color);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Data Siswa Styles */
+        .siswa-section {
+            margin-bottom: 50px;
+        }
+
+        .siswa-section h3 {
+            font-size: 1.8rem;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .siswa-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .siswa-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .siswa-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .siswa-foto {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .siswa-info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .siswa-info h4 {
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+
+        .siswa-info p {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-credit {
+            text-align: center;
+            width: 100%;
+            padding-top: 20px;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 110px;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 90px;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                background: rgba(45, 45, 45, 0.98);
+                backdrop-filter: blur(10px);
+            }
+            
+            .nav-links.active {
+                max-height: 500px;
+            }
+            
+            .nav-links li {
+                text-align: left;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                max-width: none;
+            }
+            
+            .nav-links li a {
+                padding: 15px 20px;
+            }
+            
+            .siswa-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .siswa-foto {
+                height: 150px;
+            }
+            
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+            
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .nav-links li {
+                flex: 0 0 100%;
+            }
+            
+            .siswa-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER & NAVBAR -->
+    <div class="header-wrapper">
+        <header class="header">
+            <div class="header-container">
+                <div class="header-top">
+                    <div class="logo">
+                        <img src="assets/sanjose-logo.png" alt="Logo Sekolah">
+                        <div class="logo-text">
+                            <h1>Kelas 7H</h1>
+                            <p>SMP Santo Yoseph - Denpasar</p>
+                        </div>
+                    </div>
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <nav class="navbar">
+            <div class="nav-container">
+                <ul class="nav-links">
+                    <li><a href="./home.html">Beranda</a></li>
+                    <li><a href="./home.html#profil">Profil Kelas</a></li>
+                    <li><a href="./home.html#kegiatan">Kegiatan</a></li>
+                    <li><a href="./home.html#galeri">Galeri</a></li>
+                    <li><a href="./home.html#prestasi">Prestasi</a></li>
+                    <li><a href="./pend.html">Pendamping Kelas</a></li>
+                    <li><a href="./home.html#kontak">Kontak</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- DATA SISWA SECTION -->
+    <section class="section data-siswa">
+        <div class="container">
+            <h2 class="section-title">Data Siswa Kelas 7H</h2>
+            
+            <!-- Siswa Laki-laki -->
+            <div id="siswa" class="siswa-section">
+                <h3>Siswa Laki-laki (20)</h3>
+                <div class="siswa-grid">
+                    <!-- Siswa 1 -->
+                    <div class="siswa-card">
+                        <img src="assets/rehan.jpg" alt="I Gusti Bagus Prihand Putra Prihanta" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>I Gusti Bagus Prihand Putra Prihanta</h4>
+                            <p>TTL: 25 Maret 2012</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Siswa 2 -->
+                    <div class="siswa-card">
+                        <img src="assets/kenzo.jpg" alt="I Kadek Kenzo Prayitna Saputra" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>I Kadek Kenzo Prayitna Saputra</h4>
+                            <p>TTL: 25 November 2012</p>
+                        </div>
+                    </div>
+
+                    <!-- Siswa 3 -->
+                    <div class="siswa-card">
+                        <img src="assets/hao.jpg" alt="Tjhie Zhen Hao" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>Tjhie Zhen Hao</h4>
+                            <p>TTL: 10 April 2013</p>
+                        </div>
+                    </div>
+
+                    <!-- Siswa 4 -->
+                    <div class="siswa-card">
+                        <img src="assets/arya.jpg" alt="M. Arya Duta" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>M. Arya Duta</h4>
+                            <p>TTL: 29 April 2012</p>
+                        </div>
+                    </div>
+
+                    <div class="siswa-card">
+                        <img src="assets/tian.jpg" alt="M. Arya Duta" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>Christian Dwi Angga</h4>
+                            <p>TTL: 12 Desember 2012</p>
+                        </div>
+                    </div>
+
+                     <div class="siswa-card">
+                        <img src="assets/rey.jpg" alt="M. Arya Duta" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>Rey Eliezer Bhadrika Parangan</h4>
+                            <p>TTL: 14 Februari 2013</p>
+                        </div>
+                    </div>
+
+                    <div class="siswa-card">
+                        <img src="assets/ben.jpg" alt="M. Arya Duta" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>Benedict Alexander Gideon Wijaya</h4>
+                            <p>TTL: 6 November 2012</p>
+                        </div>
+                    </div>
+                    
+                    <div class="siswa-card">
+                        <img src="assets/krisna.jpg" alt="M. Arya Duta" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>Putu krisna duta Pratama</h4>
+                            <p>TTL: 14 november 2012</p>
+                        </div>
+                    </div>
+
+                    <div class="siswa-card">
+                        <img src="assets/jeremi.jpg" alt="M. Arya Duta" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>Jeremia Excell Ariyanto</h4>
+                            <p>TTL: 12 Mei 2013</p>
+                        </div>
+                    </div>
+
+                     <div class="siswa-card">
+                        <img src="assets/arnavat.jpg" alt="M. Arya Duta" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>I.Kadek Arnavat Arya Prayata</h4>
+                            <p>TTL: 24 Oktober 2012</p>
+                        </div>
+                    </div>
+
+                    <div class="siswa-card">
+                        <img src="assets/rangga.jpg" alt="M. Arya Duta" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>Rangga Fernanda Rizky</h4>
+                            <p>TTL: 24 Februari 2013</p>
+                        </div>
+                    </div>
+
+                    <div class="siswa-card">
+                        <img src="assets/satya.jpg  " alt="M. Arya Duta" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>Ida Bagus Gde Satya Arkananta</h4>
+                            <p>TTL: 25 september 2012</p>
+                        </div>
+                    </div>
+
+
+                    <div class="siswa-card">
+                        <img src="assets/abi.jpg " alt="M. Arya Duta" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>I Dewa Gede Nayaka Pradipta Abimanyu </h4>
+                            <p>TTL: 15 Maret 2013</p>
+                        </div>
+                    </div>
+
+                    <div class="siswa-card">
+                        <img src="assets/abe.jpg " alt="M. Arya Duta" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>Abraham Keano Abimanyu Tunggal </h4>
+                            <p>TTL: 14 Maret 2013</p>
+                        </div>
+                    </div>
+
+                    <div class="siswa-card">
+                        <img src="assets/gumik.jpg " alt="M. Arya Duta" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>i gusti ngurah agung manik pramanta</h4>
+                            <p>TTL: 11 Maret 2013</p>
+                        </div>
+                    </div>
+
+                    <div class="siswa-card">
+                        <img src="assets/gumik.jpg " alt="M. Arya Duta" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>i Made Radhika Cahyadinata</h4>
+                            <p>TTL: 10 Desember 2012</p>
+                        </div>
+                    </div>
+
+                    <div class="siswa-card">
+                        <img src="assets/marvel.jpg " alt="M. Arya Duta" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>Marvel Dave benedict</h4>
+                            <p>TTL: 30 November 2013</p>
+                        </div>
+                    </div>
+
+                    <div class="siswa-card">
+                        <img src="assets/radika.jpg " alt="M. Arya Duta" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>Made Radhika Cahyadinata</h4>
+                            <p>TTL: 10 Desember 2012</p>
+                        </div>
+                    </div>
+
+                    <div class="siswa-card">
+                        <img src="assets/ezra.jpg " alt="M. Arya Duta" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>ezra</h4>
+                            <p>TTL: 10 Desember 2012</p>
+                        </div>
+                    </div>
+
+                    
+                    <div class="siswa-card">
+                        <img src="assets/axel.jpg " alt="M. Arya Duta" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>Rexeldrian Gregorio kaesmetan</h4>
+                            <p>TTL: 11 Juli 2013</p>
+                        </div>
+                    </div>
+                    <!-- Tambahkan siswa lainnya di sini -->
+                    <!-- ... -->
+                </div>
+            </div>
+            
+            <!-- Siswi Perempuan -->
+            <div id="siswi" class="siswa-section">
+                <h3>Siswi Perempuan (20)</h3>
+                <div class="siswa-grid">
+                    <!-- Siswi 1 -->
+                    <div class="siswa-card">
+                        <img src="assets/ilana.jpg" alt="Thalita Ilana Samantha" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>Thalita Ilana Samantha</h4>
+                            <p>TTL: 26 Juli 2013</p>
+                        </div>
+                    </div>
+
+                    <div class="siswa-card">
+                        <img src="assets/audrey.jpg" alt="Ni Nyoman Sasrika Maheswari" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>Dee Audrey Sarasvati Setiyawan</h4>
+                            <p>TTL: 27 Mei 2013</p>
+                        </div>
+                    </div>
+
+                    <div class="siswa-card">
+                        <img src="assets/marcia.jpg" alt="Ni Nyoman Sasrika Maheswari" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>marcia</h4>
+                            <p>TTL: 27 Mei 2013</p>
+                        </div>
+                    </div>
+
+                    <div class="siswa-card">
+                        <img src="assets/grace.jpg" alt="Ni Nyoman Sasrika Maheswari" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>Grace Natalia Tanoto</h4>
+                            <p>TTL: 11 Desember 2012</p>
+                        </div>
+                    </div>
+
+                    <div class="siswa-card">
+                        <img src="assets/mira.jpg" alt="Ni Nyoman Sasrika Maheswari" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>mira aqilla putri</h4>
+                            <p>TTL:  10 mei 2013</p>
+                        </div>
+                    </div>
+
+                    <div class="siswa-card">
+                        <img src="assets/dea.jpg" alt="Ni Nyoman Sasrika Maheswari" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4> deandra aira royan</h4>
+                            <p>TTL: 09 september 2012</p>
+                        </div>
+                    </div>
+
+                    <div class="siswa-card">
+                        <img src="assets/nara.jpg" alt="Ni Nyoman Sasrika Maheswari" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>Ni Luh Nara Indra Maheswari Putri</h4>
+                            <p>TTL:  4 april 2013</p>
+                        </div>
+                    </div>
+
+                    <div class="siswa-card">
+                        <img src="assets/gwen.jpg" alt="Ni Nyoman Sasrika Maheswari" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>kenzy gwen abigail hariandja</h4>
+                            <p>TTL: 7 july 2013</p>
+                        </div>
+                    </div>
+
+                    <div class="siswa-card">
+                        <img src="assets/yuna.jpg" alt="Ni Nyoman Sasrika Maheswari" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>Putu Ayuna Cahaya Nandana</h4>
+                            <p>TTL: 3 oktober 2012</p>
+                        </div>
+                    </div>
+
+
+                    <div class="siswa-card">
+                        <img src="assets/caca.jpg" alt="Ni Nyoman Sasrika Maheswari" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>Angelica karunia fricilla</h4>
+                            <p>TTL: 9 April 2013</p>
+                        </div>
+                    </div>
+                    
+
+                     <div class="siswa-card">
+                        <img src="assets/pal.jpg" alt="Ni Nyoman Sasrika Maheswari" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>Padme Amidala Larasati</h4>
+                            <p>TTL: 21, november, 2012</p>
+                        </div>
+                    </div>
+
+
+                    <div class="siswa-card">
+                        <img src="assets/calysta.jpg" alt="Ni Nyoman Sasrika Maheswari" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>Koming Callysta Berliani Subawa</h4>
+                            <p>TTL:  11 Maret 2013</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Siswi 2 -->
+                    <div class="siswa-card">
+                        <img src="assets/ika.jpg" alt="Ni Nyoman Sasrika Maheswari" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>Ni Nyoman Sasrika Maheswari</h4>
+                            <p>TTL: 12 Juni 2013</p>
+                        </div>
+                    </div>
+
+                    <div class="siswa-card">
+                        <img src="assets/laras.jpg" alt="Ni Nyoman Sasrika Maheswari" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>K. Ayu Ratna Larasati</h4>
+                            <p>TTL: 18 Maret 2013</p>
+                        </div>
+                    </div>
+
+                    <!-- Siswi 3 -->
+                    <div class="siswa-card">
+                        <img src="assets/luna.jpg" alt="I Gusti Agung Ayu Luna Crys Arani" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>I Gusti Agung Ayu Luna Crys Arani</h4>
+                            <p>TTL: 4 Maret 2013</p>
+                        </div>
+                    </div>
+
+                    <!-- Siswi 4 -->
+                    <div class="siswa-card">
+                        <img src="assets/okta.jpg" alt="Christina Oktaviani Tondang" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>Christina Oktaviani Tondang</h4>
+                            <p>TTL: 10 Oktober 2012</p>
+                        </div>
+                    </div>
+
+                    <!-- Siswi 5 -->
+                    <div class="siswa-card">
+                        <img src="assets/mermer.jpg" alt="Merlin Sandjaja" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>Merlin Sandjaja</h4>
+                            <p>TTL: 28 April 2013</p>
+                        </div>
+                    </div>
+
+                    <!-- Siswi 6 -->
+                    <div class="siswa-card">
+                        <img src="assets/charen.jpg" alt="Charen Kojongian" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>Charen Kojongian</h4>
+                            <p>TTL: 12 Agustus 2012</p>
+                        </div>
+                    </div>
+
+                    <div class="siswa-card">
+                        <img src="assets/GUNG.jpg" alt="Charen Kojongian" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>I Gusti Ayu Agung Istri Winavania Mardiana</h4>
+                            <p>TTL:  20 Mei 2013</p>
+                        </div>
+                    </div>
+
+                    <div class="siswa-card">
+                        <img src="assets/roro.jpg" alt="Charen Kojongian" class="siswa-foto">
+                        <div class="siswa-info">
+                            <h4>Raden Roro alikha florenza emerald kusuma</h4>
+                            <p>TTL:  13 Oktober 2012</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Tambahkan siswi lainnya di sini -->
+                    <!-- ... -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="assets/sanjose-logo.png" alt="Logo Sekolah">
+                        <h3>Kelas 7H</h3>
+                    </div>
+                    <p>Kelas dengan semangat belajar tinggi dan prestasi membanggakan</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Tautan Cepat</h4>
+                    <ul>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="index.html#profil">Profil Kelas</a></li>
+                        <li><a href="data-siswa.html">Data Siswa</a></li>
+                        <li><a href="index.html#galeri">Galeri</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Kontak</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. P.B Sudirman No.50, Denpasar</p>
+                    <p><i class="fas fa-phone"></i> (0361) 1234567</p>
+                </div>
+            </div>
+            
+            <div class="footer-credit">
+                <p>&copy; 2025 Kelas 7H SMP Santo Yoseph Denpasar. All Rights Reserved.</p>
+                <p>Dikembangkan oleh Tim Kelas 7H</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 120,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        hamburger.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    }
+                }
+            });
+        });
+
+        // Header hide/show on scroll
+        const headerWrapper = document.querySelector('.header-wrapper');
+        let lastScroll = 0;
+        
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset;
+            
+            if (Math.abs(currentScroll - lastScroll) < 5) return;
+            
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                // Scroll down
+                headerWrapper.classList.add('hide');
+            } else {
+                // Scroll up
+                headerWrapper.classList.remove('hide');
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>

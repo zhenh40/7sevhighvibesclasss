@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prestasi Sekolah</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-top: 80px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .btn-back {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        .btn-back:hover {
+            background-color: #2980b9;
+            transform: translateX(-50%) scale(1.05);
+        }
+        
+        /* Style untuk daftar prestasi */
+        .achievement-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .achievement-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .student-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #3498db;
+            margin-right: 25px;
+        }
+        .student-info {
+            flex: 1;
+        }
+        .student-name {
+            font-size: 24px;
+            margin: 0 0 5px 0;
+            color: #2c3e50;
+        }
+        .student-class {
+            font-size: 16px;
+            color: #7f8c8d;
+            margin: 0 0 10px 0;
+        }
+        .achievement-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .achievement-item {
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #3498db;
+            border-radius: 0 4px 4px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .achievement-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .achievement-detail {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        .achievement-year {
+            background-color: #3498db;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            min-width: 70px;
+            text-align: center;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .achievement-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .student-photo {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            .achievement-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .achievement-year {
+                margin-top: 8px;
+                align-self: flex-end;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Tombol Back Sticky -->
+    <a href="home.html" class="btn-back">← Kembali ke Halaman Utama</a>
+    
+    <div class="container">
+        <h1>Prestasi Siswa</h1>
+        
+        <!-- Prestasi Siswa 1 -->
+        <div class="achievement-section">
+            <div class="achievement-header">
+                <img src="assets/hao2.jpg" alt="Foto Andi Wijaya" class="student-photo">
+                <div class="student-info">
+                    <h2 class="student-name">Tjhie Zhen Hao</h2>
+                    <p class="student-class">Kelas 7H</p>
+                    <p>Total Prestasi: 5</p>
+                </div>
+            </div>
+            <ul class="achievement-list">
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title">Juara 3 Nan Quan B Kejuaraan Nasional Wushu CSWI CUP -Piala Koni JATIM </div>
+                        <div class="achievement-detail">Surabaya</div>
+                        
+                    </div>
+                    <span class="achievement-year">2025</span>
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title">Juara 1 Nan Dao C Pekan Olahraga Pelajar Cabang Wushu -Tingkat Kota </div>
+                        <div class="achievement-detail">Denpasar</div>
+                    </div>
+                    <span class="achievement-year">2025</span>
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title">Juara 3 Nan Dao B Kejuaraan Nasional Wushu CSWI CUP -Piala Koni JATIM</div>
+                        <div class="achievement-detail">Surabaya</div>
+                    </div>
+                    <span class="achievement-year">2025</span>
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title">Juara 3 Nan Dao C Pekan Olahraga Pelajar Cabang Wushu -Tingkat Kecamatan</div>
+                        <div class="achievement-detail">Denpasar Utara</div>
+                    </div>
+                    <span class="achievement-year">2025</span>
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title">Peringkat 8 Dalam The Best Ten Olimpiade matematika -Dalam Rangka HUT SMP Harapan Nusantara Tingkat Kota</div>
+                        <div class="achievement-detail">Denpasar</div> 
+                    </div>
+                    <span class="achievement-year">2025</span>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Prestasi Siswa 2 -->
+        <div class="achievement-section">
+            <div class="achievement-header">
+                <img src="assets/rehan.jpg" alt="Foto Siti Rahma" class="student-photo">
+                <div class="student-info">
+                    <h2 class="student-name">I Gusti Bagus Prihand Putra Prihanta</h2>
+                    <p class="student-class">Kelas 7H</p>
+                    <p>Total Prestasi: 2</p>
+                </div>
+            </div>
+            <ul class="achievement-list">
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title">juara 3 regu putra berprestasi cukup mading 3D tingkat SD lomba logika tahun 2023 tingkat provinsi bali</div>
+                        <div class="achievement-detail">Kompetisi antar sekolah se-Bali</div>
+                    </div>
+                    <span class="achievement-year">2023</span>
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title"> juara 1 regu berprestasi tinggi hasta karya lomba logika tahun 2024 tingkat provinsi Bali</div>
+                        
+                    </div>
+                    <span class="achievement-year">2024</span>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Prestasi Siswa 3 -->
+        <div class="achievement-section">
+            <div class="achievement-header">
+                <img src="assets/marcia.jpg" alt="Foto Rizky Pratama" class="student-photo">
+                <div class="student-info">
+                    <h2 class="student-name">Marcia</h2>
+                    <p class="student-class">Kelas 7H</p>
+                    <p>Total Prestasi: 7</p>
+                </div>
+            </div>
+            <ul class="achievement-list">
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title">juara 1 santo Yoseph cub 2022</div>
+                        <div class="achievement-detail">basket</div>
+                    </div>
+                    <span class="achievement-year">2022</span>
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title">juara2 sy cub 2024</div>
+                        <div class="achievement-detail">basket</div>
+                    </div>
+                    <span class="achievement-year">2024</span>
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title">juara3 sy cub 2023</div>
+                        <div class="achievement-detail">basket</div>
+                    </div>
+                    <span class="achievement-year">2023</span>
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title">juara3 jb cub 2023</div>
+                        <div class="achievement-detail">basket</div>
+                    </div>
+                    <span class="achievement-year">2023</span>
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title"> juara 1 DJL 2025</div>
+                        <div class="achievement-detail">basket</div>
+                    </div>
+                    <span class="achievement-year">2025</span>
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title"> juara 1 walikota cub 2025</div>
+                        <div class="achievement-detail">basket</div>
+                    </div>
+                    <span class="achievement-year">2025</span>
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title"> juara 1 merpati cub 2025</div>
+                        <div class="achievement-detail">basket</div>
+                    </div>
+                    <span class="achievement-year">2025</span>
+                </li>
+            </ul>
+        </div>
+        <div class="achievement-section">
+            <div class="achievement-header">
+                <img src="assets/satya.jpg" alt="Foto Rizky Pratama" class="student-photo">
+                <div class="student-info">
+                    <h2 class="student-name">Gus Satya</h2>
+                    <p class="student-class">Kelas 7H</p>
+                    <p>Total Prestasi: 5</p>
+                </div>
+            </div>
+            <ul class="achievement-list">
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title">Juara 3 gitar klasik tahun 2022 </div>
+                        <div class="achievement-detail">clarence guitar competition</div>
+                    </div>
+                    <span class="achievement-year">2022</span>
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title">Juara 2 gitar klasik tahun 2024</div>
+                        <div class="achievement-detail">clarence guitar competition</div>
+                    </div>
+                    <span class="achievement-year">2024</span>
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title">Juara 3 gitar klasik tahun 2025</div>
+                        <div class="achievement-detail">clarence guitar competition</div>
+                    </div>
+                    <span class="achievement-year">2025</span>
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title">Juara 4 Sanjose One Idol 2025</div>
+                        
+                    </div>
+                    
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title">Juara 1 dan juara favorite festival band SMP 1 Denpasar 2025</div>
+                        
+                    </div>
+                    <span class="achievement-year">2025</span>
+                </li>
+               
+            </ul>
+        </div>
+        <div class="achievement-section">
+            <div class="achievement-header">
+                <img src="assets/kenzo.jpg " alt="Foto Rizky Pratama" class="student-photo">
+                <div class="student-info">
+                    <h2 class="student-name">Kenzo</h2>
+                    <p class="student-class">Kelas 7H</p>
+                    <p>Total Prestasi: 3</p>
+                </div>
+            </div>
+            <ul class="achievement-list">
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title">juara 3, Saint Thomas In Action 2024 bertema:"Down to Earth with Culture, Soaring with unique Culture in the world and Upholding Creativity" (Lomba Marching Band)</div>
+                        
+                    </div>
+                    
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title">juara 1 LAGGAM INDONESIA XXXII/2019(Langkah Gerak Generasi Muda Indonesia XXXII/2019) LOMBA DRUMBAND/MARCHING BAND TINGKAT NASIONAL DIVISI TK di universitas Warmadewa (drumband)</div>
+                        
+                    </div>
+                    
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title">juara 3, pemula Pra Cadet PUTRA Under 41 kejuaraan Taekwondo Open Hut Kota Denpasar ke-237   </div>
+                        
+                    </div>
+                    
+                </li>
+                
+                    
+                </li>
+               
+            </ul>
+        </div>
+         <div class="achievement-section">
+            <div class="achievement-header">
+                <img src="assets/pal.jpg " alt="Foto Rizky Pratama" class="student-photo">
+                <div class="student-info">
+                    <h2 class="student-name">PAL</h2>
+                    <p class="student-class">Kelas 7H</p>
+                    <p>Total Prestasi: 1</p>
+                </div>
+            </div>
+            <ul class="achievement-list">
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title"> The highest score in Ballet RAD (Royal Academy of Dance) Examination Grade Primary, tahun 2019 - Grade 1, tahun 2020, at Ballet Royal Bali. Juara II Dance competition virtual 2021 at Petra Berkat school. 1 Year Duolingo Streak</div>
+                        
+                    </div>
+                    
+                </li>
+                
+            </ul>
+        </div>
+        <div class="achievement-section">
+            <div class="achievement-header">
+                <img src="assets/abi.jpg " alt="Foto Rizky Pratama" class="student-photo">
+                <div class="student-info">
+                    <h2 class="student-name">Dewa Abi</h2>
+                    <p class="student-class">Kelas 7H</p>
+                    <p>Total Prestasi: 5</p>
+                </div>
+            </div>
+            <ul class="achievement-list">
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title"> Juara 1 DJL (Denpasar Junior League) 2025</div>
+                        
+                    </div>
+                    
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title"> Juara 1 Tunas Daud Cup 2024</div>
+                        
+                    </div>
+                    
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title"> Juara 1 SY Cup 2024</div>
+                        
+                    </div>
+                    
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title"> Juara 1 Merpati Cup 2025</div>
+                        
+                    </div>
+                    
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title">Juara 1 YBA (Youth Basketball Tournament) 2024</div>
+                        
+                    </div>
+                    
+                </li>
+                
+            </ul>
+        </div>
+        <div class="achievement-section">
+            <div class="achievement-header">
+                <img src="assets/roro.jpg " alt="Foto Rizky Pratama" class="student-photo">
+                <div class="student-info">
+                    <h2 class="student-name">Alikha</h2>
+                    <p class="student-class">Kelas 7H</p>
+                    <p>Total Prestasi: 2</p>
+                </div>
+            </div>
+            <ul class="achievement-list">
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title"> juara 1 walikota cup basketball 2024</div>
+                        
+                    </div>
+                    
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title"> juara 1 merpati cup basketball 2024</div>
+                        
+                    </div>
+                    
+                </li>
+                
+            </ul>
+        </div>
+        <div class="achievement-section">
+            <div class="achievement-header">
+                <img src="assets/abi.jpg " alt="Foto Rizky Pratama" class="student-photo">
+                <div class="student-info">
+                    <h2 class="student-name">Dewa Abi</h2>
+                    <p class="student-class">Kelas 7H</p>
+                    <p>Total Prestasi: 4</p>
+                </div>
+            </div>
+            <ul class="achievement-list">
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title"> Juara 2 U-12 male kumite (festival Bali Badung Open Karate International Championship Bali 2023)</div>
+                        
+                    </div>
+                    
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title"> Juara 3 kumite perorangan pra-pemula putra festival Shoto-kai bali open karate tournament 2023 piala president of shoto-kai</div>
+                        
+                    </div>
+                    
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title"> Juara 3 putra berprestasi cukup Mading 3D Tingkat SD Lomba giat pramuka (Logika 2023) TKK MPK keuskupan denpasar SD & SMP Tegaljaya</div>
+                        
+                    </div>
+                    
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title"> Juara 1 regu berprestasi tinggi hasta karya dalam lomba dan giat pramuka 2024 TKK MPK  keuskupan denpasar di sdk karya dan smpk santo paulus singaraja</div>
+                        
+                    </div>
+                    
+                </li>
+                
+                
+            </ul>
+        </div>
+
+          <div class="achievement-section">
+            <div class="achievement-header">
+                <img src="assets/arnavat.jpg " alt="Foto Rizky Pratama" class="student-photo">
+                <div class="student-info">
+                    <h2 class="student-name">Arnavat</h2>
+                    <p class="student-class">Kelas 7H</p>
+                    <p>Total Prestasi: 4</p>
+                </div>
+            </div>
+            <ul class="achievement-list">
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title"> Juara 2 U-12 male kumite (festival Bali Badung Open Karate International Championship Bali 2023)</div>
+                        
+                    </div>
+                    
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title"> Juara 3 kumite perorangan pra-pemula putra festival Shoto-kai bali open karate tournament 2023 piala president of shoto-kai</div>
+                        
+                    </div>
+                    
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title"> Juara 3 putra berprestasi cukup Mading 3D Tingkat SD Lomba giat pramuka (Logika 2023) TKK MPK keuskupan denpasar SD & SMP Tegaljaya</div>
+                        
+                    </div>
+                    
+                </li>
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title"> Juara 1 regu berprestasi tinggi hasta karya dalam lomba dan giat pramuka 2024 TKK MPK  keuskupan denpasar di sdk karya dan smpk santo paulus singaraja</div>
+                        
+                    </div>
+                    
+                </li>
+                
+                
+            </ul>
+        </div>
+
+                <div class="achievement-section">
+                    <div class="achievement-header">
+                        <img src="assets/krisna.jpg " alt="Foto Rizky Pratama" class="student-photo">
+                        <div class="student-info">
+                            <h2 class="student-name">Krisna</h2>
+                            <p class="student-class">Kelas 7H</p>
+                            <p>Total Prestasi: 4</p>
+                        </div>
+                    </div>
+                    <ul class="achievement-list">
+                        <li class="achievement-item">
+                            <div>
+                                <div class="achievement-title"> ⁠juara 1 sy cup 2024</div>
+                                
+                            </div>
+                            
+                        </li>
+                        <li class="achievement-item">
+                            <div>
+                                <div class="achievement-title"> juara 1 djl (denpasar junior league)</div>
+                                
+                            </div>
+                            
+                        </li>
+                        <li class="achievement-item">
+                            <div>
+                                <div class="achievement-title">⁠juara 1 dyatmuka cup 2024</div>
+                                
+                            </div>
+                            
+                        </li>
+                        <li class="achievement-item">
+                            <div>
+                                <div class="achievement-title"> * juara 1 tunas daut cup 2024
+        </div>
+                                
+                            </div>
+                            
+                        </li>
+                        
+                        
+                    </ul>
+                </div>
+
+         <div class="achievement-section">
+            <div class="achievement-header">
+                <img src="assets/GUNG.jpg " alt="Foto Rizky Pratama" class="student-photo">
+                <div class="student-info">
+                    <h2 class="student-name">Gung Is</h2>
+                    <p class="student-class">Kelas 7H</p>
+                    <p>Total Prestasi: 1</p>
+                </div>
+            </div>
+            <ul class="achievement-list">
+                <li class="achievement-item">
+                    <div>
+                        <div class="achievement-title"> Juara 1 cooltura dance competition bali. 
+Best dance group 
+kids festival GOG  dance class</div>
+                        
+                    </div>
+                    
+                </li>
+                
+                
+                
+            </ul>
+        </div>
+
+                
+
+    </div>
+
+    <script>
+        // Optional: Efek smooth scroll untuk navigasi internal
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
